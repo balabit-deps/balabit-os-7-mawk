@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+sed -e '
+	/^PATH=/d;
+	/^mawk -W version/ s/$/ 2>&1/;
+' <test/mawktest >"$ADTTMP/mawktest"
+chmod +x "$ADTTMP/mawktest"
+cd test
+"$ADTTMP/mawktest"
